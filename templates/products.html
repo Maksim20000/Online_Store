@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="static/css/products.css">
+{% endblock %}
+
+{% block content %}
+<table class="styled-table">
+  <tr>
+    <th>Наименование</th>
+    <th>Описание</th>
+    <th>Цена</th>
+    <th>Фото</th>
+    <th>В корзине</th>
+    <th></th>
+  </tr>
+  {% for row in data %}
+  <form action="/products"  method='POST'>
+    <tr>
+      <input type="hidden" value="{{row.id}}" name='item_id'>
+      <td>{{row.name}}</td>
+      <td>{{row.description}}</td>
+      <td>{{row.price}} руб</td>
+      <td><img src="static/images/{{row.image}}" width="120" height="90" /></td>
+      <td>{{row.amount}} шт.</td>
+      <td><button type="submit">В корзину</button></td>
+    </tr>
+  </form>
+  {% endfor %}
+{% endblock %}

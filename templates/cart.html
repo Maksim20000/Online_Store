@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block head %}
+    <link rel="stylesheet" type= "text/css" href= "/static/css/cart.css">
+    <link rel="stylesheet" type="text/css" href="static/css/products.css">
+{% endblock %}
+
+{% block content %}
+{% if data %}
+    <div>
+        <table class="styled-table">
+            <tr>
+                <th>Наименование</th>
+                <th>Описание</th>
+                <th>Цена</th>
+                <th>кол-во</th>
+                <th>Итоговая цена</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <th>{{row.name}}</th>
+                <th>{{row.description}}</th>
+                <th>{{row.price}} руб.</th>
+                <th>{{row.amount}} шт.</th>
+                <th>{{row.total}} руб.</th>
+            </tr>    
+            {% endfor%}
+          </table>
+{% else %}
+    <div class='bg-image'>
+{% endif %}
+    </div>
+{% endblock %}
